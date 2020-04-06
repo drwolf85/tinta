@@ -1,0 +1,58 @@
+' Gambas class file
+
+Static Public idx As Integer
+
+Public Sub Form_Open()
+  mypalette.Clear()
+  csel.SelectedColor = &HFFFFFF
+End
+
+Public Sub bAdd_Click()
+  mypalette.Add(csel.SelectedColor)
+End
+
+Public Sub bClean_Click()
+  mypalette.Clear()
+End
+
+Public Sub bExport_Click()
+  Dim strPalette As String
+  Dim colori As Integer[]
+  Dim i As Integer
+  colori = mypalette.Colors
+  If colori.Count > 0 Then 
+    i = 0
+    strPalette = ""
+    If colori[i] < 256 Then strPalette &= "00"
+    If colori[i] < 65536 Then strPalette &= "00"
+    strPalette &= Hex$(colori[i])
+    For i = 1 To colori.Max
+      strPalette &= ","
+      If colori[i] < 256 Then strPalette &= "00"
+      If colori[i] < 65536 Then strPalette &= "00"
+      strPalette &= Hex$(colori[i])
+    Next
+    Clipboard.Clear()
+    Clipboard.Copy(strPalette)
+    Message("Your palette has been copied in the clipboard.")
+  Endif
+End
+
+Public Sub mypalette_Click()
+  csel.SelectedColor = mypalette.Current
+  idx = mypalette.Index
+End
+
+Public Sub bUpdate_Click()
+  Dim colori As Integer[]
+  Dim i As Integer
+  colori = mypalette.Colors
+  If colori.Count > 0 Then
+    colori[idx] = csel.SelectedColor
+    mypalette.Clear()
+    For i = 0 To colori.Max
+      mypalette.Add(colori[i])
+    Next
+    mypalette.Refresh()    
+  Endif
+End
