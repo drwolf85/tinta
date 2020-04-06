@@ -2,7 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,77,43)
-  Icon = Picture["icon:/32/color"]
+  Icon = Picture["icon.png"]
   Resizable = False
   { csel ColorChooser
     MoveScaled(1,1,57,36)
