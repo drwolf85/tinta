@@ -1,0 +1,29 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,77,43)
+  Icon = Picture["icon:/32/color"]
+  Resizable = False
+  { csel ColorChooser
+    MoveScaled(1,1,57,36)
+  }
+  { mypalette ColorPalette
+    MoveScaled(1,38,75,4)
+  }
+  { bAdd Button
+    MoveScaled(59,1,16,4)
+    Text = ("Add Color")
+  }
+  { bClean Button
+    MoveScaled(59,19,16,4)
+    Text = ("Clean")
+  }
+  { bExport Button
+    MoveScaled(59,33,16,4)
+    Text = ("Export")
+  }
+  { bUpdate Button
+    MoveScaled(59,6,16,4)
+    Text = ("Update Color")
+  }
+}
